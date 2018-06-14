@@ -40,9 +40,18 @@ portForward() {
   kubectl port-forward $podname $port
 }
 
+function switchContextOrPanic {
+  kubectl config use-context "$@"
+  if [ "$?" -ne 0 ]; then
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "Switching contexts did not work. You are still in the previous context. Beware!"
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  fi
+}
+
 # Aliases
 alias ku=kubectl
-alias kuc="kubectl config use-context"
+alias kuc="switchContextOrPanic"
 alias kucc="kubectl config current-context"
 alias kup="kubectl get pods"
 alias kug="kubectl get"
