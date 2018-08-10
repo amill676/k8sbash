@@ -1,3 +1,7 @@
+podsForNode() {
+    kubectl get pods --field-selector=spec.nodeName="$1"
+}
+
 deletePod() {
   if [ -z $1 ]; then
     echo 'Deletes all pods that match a given pattern'
@@ -62,3 +66,4 @@ alias kag="kubectl get --all-namespaces"
 alias kagl="kubectl get -o yaml --all-namespaces"
 alias kupf=portForward
 alias kudelpo=deletePod
+alias kunopo=podsForNode
