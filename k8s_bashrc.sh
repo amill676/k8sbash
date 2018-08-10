@@ -1,5 +1,5 @@
 podsForNode() {
-    kubectl get pods --field-selector=spec.nodeName="$1"
+    kubectl get pods --field-selector=spec.nodeName=$1 ${@:2}
 }
 
 deletePod() {
@@ -66,4 +66,4 @@ alias kag="kubectl get --all-namespaces"
 alias kagl="kubectl get -o yaml --all-namespaces"
 alias kupf=portForward
 alias kudelpo=deletePod
-alias kunopo=podsForNode
+alias kupno=podsForNode
