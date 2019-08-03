@@ -53,6 +53,18 @@ function switchContextOrPanic {
   fi
 }
 
+function scaleDeploy {
+  if [ -z $1 ]; then
+      echo 'Usage: kusd <deployment name> <replicas>'
+      return
+  fi
+  if [ -z $2 ]; then
+      echo 'Usage: kusd <deployment name> <replicas>'
+      return
+  fi
+  kubectl scale deploy $1 --replicas $2
+}
+
 # Aliases
 alias ku=kubectl
 alias kuc="switchContextOrPanic"
@@ -61,6 +73,7 @@ alias kup="kubectl get pods"
 alias kug="kubectl get"
 alias kugl="kubectl get -o yaml"
 alias kud="kubectl describe"
+alias kusd=scaleDeploy
 alias kap="kubectl get pods --all-namespaces"
 alias kag="kubectl get --all-namespaces"
 alias kagl="kubectl get -o yaml --all-namespaces"
