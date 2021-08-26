@@ -74,6 +74,7 @@ alias kug="kubectl get"
 alias kugl="kubectl get -o yaml"
 alias kud="kubectl describe"
 alias kusd=scaleDeploy
+alias kudf="kubectl delete po --force --grace-period 0"
 alias kap="kubectl get pods --all-namespaces"
 alias kag="kubectl get --all-namespaces"
 alias kagl="kubectl get -o yaml --all-namespaces"
